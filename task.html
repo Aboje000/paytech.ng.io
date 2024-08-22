@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share and Claim Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            position: fixed;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            align-content: center;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            
+        }
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+            
+        }
+        .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin-left: calc(50% - 200);
+}
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+h2 {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+       <h1>Do task and earn ₦50 for each task</h1>
+    </header>
+    <div class="container">
+         <h2>Follow us on TikTok</h2>
+       <button id="myButton">Follow</button>
+    <button id="claimButton" disabled onclick="remove();time();addBalance();disableElementById('myButton')">Claim</button>
+    <p id="message"></p>
+    </div>
+    <br>
+    <br>
+  <h2>Come by tomorrow to Claim tomorrow's Reward</h2> 
+   
+
+    <script>
+        const shareButton = document.getElementById('myButton');
+        const claimButton = document.getElementById('claimButton');
+        const message = document.getElementById('message');
+
+        // Check the localStorage for the claim button state
+        const claimEnabledUntil = localStorage.getItem('claimEnabledUntil');
+       
+        if (claimEnabledUntil) {
+            const currentTime = new Date().getTime();
+            if (currentTime < claimEnabledUntil) {
+                enableClaimButton(claimEnabledUntil - currentTime);
+            } else {
+                localStorage.removeItem('claimEnabledUntil');
+            }
+        }
+
+        shareButton.addEventListener('click', () => {
+            // Redirect to the TikTok page
+            window.open('https://chat.whatsapp.com/CX5M52Sudi40X9UaLWhTt0', '_blank');
+           
+           
+         
+
+            // Enable the claim button for 1 minute
+            const enableDuration = 10000; // 10000 ms = 10 seconds
+            const enabledUntil = new Date().getTime() + enableDuration;
+           
+            localStorage.setItem('claimEnabledUntil', enabledUntil);
+            enableClaimButton(enableDuration);
+        });
+
+        function enableClaimButton(duration) {
+            claimButton.disabled = false;
+            message.textContent = 'The claim button is now enabled for 1 minute.';
+
+            setTimeout(() => {
+                claimButton.disabled = true;
+                localStorage.removeItem('claimEnabledUntil');
+                message.textContent = 'Task completed successfully .';
+            }, duration);
+        }
+        function remove(){
+            document.getElementById("myButton").style.display="none"
+            document.getElementById("claimButton").style.display="none"
+        }
+       
+        function time(){
+            message.textContent = 'Task completed successfully .';
+        }
+       
+       
+       
+       
+       let number= 20;
+       
+        function getBalance() {
+            return parseFloat(localStorage.getItem('balance')) || 0;
+        }
+    function addBalance() {
+            const amount = parseFloat(number);
+            if (!isNaN(amount) && amount > 0) {
+                const currentBalance = getBalance();
+                const newBalance = currentBalance + amount;
+                localStorage.setItem('balance', newBalance.toFixed(2));
+                alert(`₦${amount.toFixed(2)} added!`);
+                window.location.href = 'hompage.html';
+            } else {
+                alert('Please enter a valid amount.');
+            }
+        }
+       
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   // Function to disable an element by ID and store its state in localStorage
+        function disableElementById(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.disabled = true; // Disable the element
+
+                // Store the disable state in localStorage
+                const disableUntil = new Date().getTime() + 86400000; // 20 seconds from now
+                localStorage.setItem(id, disableUntil);
+
+                // Re-enable the element after 20 seconds
+                setTimeout(() => {
+                    element.disabled = false;
+                    localStorage.removeItem(id); // Remove item from localStorage after enabling
+                }, 86400000); // 20 seconds
+            }
+        }
+
+        // Function to check if an element should be disabled on page load
+        function checkElementStatus(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                const disableUntil = localStorage.getItem(id);
+                if (disableUntil) {
+                    const currentTime = new Date().getTime();
+                    if (currentTime < disableUntil) {
+                        element.disabled = true; // Keep the element disabled
+                        setTimeout(() => {
+                            element.disabled = false; // Re-enable after 24 hrs
+                            localStorage.removeItem(id); // Clean up localStorage
+                        }, disableUntil - currentTime);
+                    }
+                }
+            }
+        }
+
+        // Check element status when the page loads
+        checkElementStatus('myButton');
+ 
+       
+       
+       
+       
+    </script>
+</body>
+</html>

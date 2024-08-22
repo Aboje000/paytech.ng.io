@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy coupon code</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pay<span>tech</span></h1>
+       
+    </header>
+
+    <main>
+        <section id="signup">
+           
+            <form action="/submit-signup" method="POST">
+              <div class="img">
+                  <img src="payimages/code.png" alt="">
+              </div> 
+ 
+               
+                <button type="submit" id="request-payment">Buy Code</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Purchase your code from our WhatsApp vendor</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 2rem;
+}
+
+#signup {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+span{
+    color: orange;
+}
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.img img{
+     width:100px;
+}
+  a{
+      text-decoration:none;
+  }
+  section{
+      display:flex;
+      justify-content:center;
+     
+  }
+    </style>
+    <script>
+ 
+document.getElementById('request-payment').addEventListener('click', function() {
+    // Predefined message to be sent via WhatsApp
+    const message = encodeURIComponent("Hello, I would like to  make payment for my coupon code for Paytech.com.");
+   
+    // Redirect the user to WhatsApp chat with the pre-filled message
+    window.location.href = `https://wa.me/+2348145969428?text=${message}`; // Replace with your actual WhatsApp number (without + or dashes)
+});
+    </script>
+</body>
+</html>

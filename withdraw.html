@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Request Payment</h1>
+        <p>Click on the button below to request your payment from our WhatsApp vendor with a screenshot of your account balance.</p>
+        <button id="request-payment" class="button" onclick="request();">Request Payment</button>
+    </div>
+   
+    <script src="script.js"></script>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #25D366; /* WhatsApp green color */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #128C7E; /* Darker green for hover */
+}
+    </style>
+    <script>
+ 
+  function request(){
+      document.getElementById('request-payment').addEventListener('click', function() {
+    // Predefined message to be sent via WhatsApp
+    const message = encodeURIComponent("Hello,I'm here to request payment from paytech.com, i'm eligible for minimum withdrawal ''");
+   
+    // Redirect the user to WhatsApp chat with the pre-filled message
+    window.location.href = `https://wa.me/+2348145969428?text=${message}`; // Replace with your actual WhatsApp number (without + or dashes)
+});
+  }
+ 
+ 
+    </script>
+</body>
+</html>

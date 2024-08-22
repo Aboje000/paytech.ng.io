@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paytech.com</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="payimages/code.jpg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Sign Up</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="signup">
+            <h2>login</h2>
+            <form id="signupForm">
+               
+  <label for="coupon">Coupon Code:</label>
+  <input type="text" id="coupon" name="coupon" required>
+
+                
+             
+                <input type="submit" value="Submit" id="black">
+             
+              
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 2rem;
+}
+
+#signup {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#black {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#black:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.4rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+ 
+  a{
+      text-decoration:none;
+  }
+ 
+ 
+    </style>
+    <script>
+      document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission
+            const couponCode = document.getElementById('coupon').value;
+            
+            // Validate coupon code
+            if (couponCode === "404081") {
+                window.location.href = 'hompage.html'; // Redirect to homepage
+            } else {
+                alert('Invalid coupon code. Access denied.');
+            }
+        });
+    </script>
+</body>
+</html>
